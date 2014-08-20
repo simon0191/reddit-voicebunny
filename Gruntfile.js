@@ -5,9 +5,14 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       serve: {
-        files: ['public/**/*.html','public/styles/**/*.css','public/js/**/*.js','public/images/**/*.*'],
+        files: [
+          'public/**/*.html',
+          'public/styles/**/*.css',
+          'public/js/**/*.js',
+          'public/images/**/*.*'
+        ],
         options: {
-          livereload: true,
+          livereload: true
         }
       }
     },
@@ -21,15 +26,24 @@ module.exports = function(grunt) {
           }
         }
       }
+    },
+    execute: {
+      serve: {
+        src: ['main.js']
+      }
+    },
+    concurrent: {
+      serve: ['execute:serve','watch:serve']
     }
   });
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-execute');
+  grunt.loadNpmTasks('grunt-concurrent');
 
   //Custom tasks
   grunt.registerTask('serve', [
-    'connect:livereload',
-    'watch:serve',
+    'concurrent:serve'
   ]);
 
 };
