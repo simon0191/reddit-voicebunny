@@ -30,9 +30,9 @@ app.post('/projects', function(req,res) {
   var postParams = req.body;
   projectsAdapter.create(postParams,function(err,project){
     if(err) {
-      res.send(500,{
-        error: 'Something went wrong'
-      });
+      var body = err.body;
+      var error = JSON.parse(body);
+      res.send(error.error.status,error.error.message);
     } else {
       res.send(200,project);
     }
@@ -43,12 +43,10 @@ app.get('/projects/:id', function(req,res) {
 
   var projectId = req.params.id.toString();
 
-  console.log("SIMON2: "+JSON.stringify(projectId));
-
   projectsAdapter.detail(projectId,function(err,project){
     if(err) {
-      res.send(500,{
-        error: 'Something went wrong'
+      res.send(400,{
+        error: err
       });
     } else {
       res.send(200,project);

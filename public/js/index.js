@@ -25,7 +25,14 @@ $(document).ready(function(){
         console.log(data);
         var project = data.project;
         showProjectInfo(project);
-      }, "json");
+      }, "json")
+      .fail(function(err){
+        console.log(err);
+        showErrorModal('Somethign went wrong',
+          err.responseText
+        );
+
+      });
     }
   });
 
@@ -57,7 +64,7 @@ $(document).ready(function(){
       }
     });
     if(invalid) {
-      $('#error-modal').modal('show');
+      showErrorModal('Missing data','Please find a Trendy article before creating a Speedy project.');
       return false;
     } else {
       return true;
@@ -76,6 +83,11 @@ $(document).ready(function(){
         }
       }
     });
+    var testMode = $('#test-mode').prop('checked');
+    if(testMode) {
+      postData.test = '1';
+    }
+
 
     return postData;
   }
@@ -90,5 +102,11 @@ $(document).ready(function(){
     $('#links-container').html(links);
     $('#project-id').text(project.id);
     $('#notification-modal').modal('show');
+  }
+
+  function showErrorModal(title,content){
+    $('#error-modal .modal-header h2').text(title);
+    $('#error-modal .modal-body p').text(content);
+    $('#error-modal').modal('show');
   }
 });
