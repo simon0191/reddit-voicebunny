@@ -13,7 +13,8 @@
     "express": "^4.8.5",
     "http-post": "^0.1.1",
     "jquery": "^2.1.1",
-    "requestify": "^0.1.16"
+    "requestify": "^0.1.16",
+    "underscore": "^1.6.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
