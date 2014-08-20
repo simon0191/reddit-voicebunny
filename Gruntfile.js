@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },
     execute: {
       serve: {
-        src: ['main.js']
+        src: ['web.js']
       }
     },
     concurrent: {

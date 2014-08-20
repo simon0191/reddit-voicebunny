@@ -28,6 +28,7 @@ app.get('/articles/trendy', function(req,res) {
 //POST -> create a speedy project
 app.post('/projects', function(req,res) {
   var postParams = req.body;
+  console.log("POSTPARAMS: "+postParams);
   projectsAdapter.create(postParams,function(err,project){
     if(err) {
       res.send(500,{
@@ -47,6 +48,6 @@ app.use(express.static(__dirname + '/public'));
 
 
 //Init app
-var port = process.env.PORT || port;
+var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Listening in port '+port);
