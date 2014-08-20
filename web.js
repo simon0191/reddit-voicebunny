@@ -47,6 +47,6 @@ app.use(express.static(__dirname + '/public'));
 
 
 //Init app
-var port = 3000;
-app.listen(process.env.PORT || port);
+var port = process.env.PORT || port;
+app.listen(port);
 console.log('Listening in port '+port);
