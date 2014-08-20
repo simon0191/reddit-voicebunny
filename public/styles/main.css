@@ -1,0 +1,13 @@
+.vb-embedded-player {
+	height: 90px;
+}
+
+/** Footer*/
+footer {
+	min-height:50px;
+}
+.made-by{
+	background-color: black;
+	color: white;
+	padding: 3px;
+}
