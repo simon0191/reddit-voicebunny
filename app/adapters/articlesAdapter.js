@@ -8,9 +8,6 @@ var articlesAdapter = (function() {
           // Get the response body
           var title = response.getBody().data.children[0].data.title;
           var url = response.getBody().data.children[0].data.url;
-
-          console.log("Title: "+title);
-          console.log("URL: "+url);
           callback(null,{
             title: title,
             url: url
