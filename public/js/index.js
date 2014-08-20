@@ -21,21 +21,23 @@ $(document).ready(function(){
     if(validateForm()) {
       var postData = getPostData();
 
-
       $.post('/projects', postData, function(data) {
-        var project = data.project;
-        var links = _.map(project.reads[0].urls,function(url,name) {
-          return $('<a/>',{
-            href:url.default,
-            text: name
-          });
-        });
-        $('#links-container').html(links);
-        $('#notification-modal').modal('show');
-
         console.log(data);
+        var project = data.project;
+        showProjectInfo(project);
       }, "json");
     }
+  });
+
+  //Check project status
+  $('#check-status-btn').on('click',function(event){
+    event.preventDefault();
+
+    var projectId = $('#check-status-id').val();
+    $.getJSON('/projects/'+projectId, function(project) {
+        console.log(project);
+        showProjectInfo(project);
+      });
   });
 
 
@@ -78,4 +80,15 @@ $(document).ready(function(){
     return postData;
   }
 
+  function showProjectInfo(project){
+    var links = _.map(project.reads[0].urls,function(url,name) {
+      return $('<a/>',{
+        href:url.default,
+        text: name
+      });
+    });
+    $('#links-container').html(links);
+    $('#project-id').text(project.id);
+    $('#notification-modal').modal('show');
+  }
 });

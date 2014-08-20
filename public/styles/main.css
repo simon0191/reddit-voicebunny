@@ -4,7 +4,9 @@
 
 /** Footer*/
 footer {
+	margin-top: 50px;
 	min-height:50px;
+	background-color: whitesmoke;
 }
 .made-by{
 	background-color: black;

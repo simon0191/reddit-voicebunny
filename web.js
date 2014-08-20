@@ -38,7 +38,23 @@ app.post('/projects', function(req,res) {
     }
   });
 });
+//GET -> check status of a project
+app.get('/projects/:id', function(req,res) {
 
+  var projectId = req.params.id.toString();
+
+  console.log("SIMON2: "+JSON.stringify(projectId));
+
+  projectsAdapter.detail(projectId,function(err,project){
+    if(err) {
+      res.send(500,{
+        error: 'Something went wrong'
+      });
+    } else {
+      res.send(200,project);
+    }
+  });
+});
 
 
 // Serve static files

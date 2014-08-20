@@ -126,7 +126,22 @@
           </div>
         </div>
 
-
+        <div class="row">
+          <div class="col-xs-12 page-header">
+            <h2>Check the status of your project</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <form>
+              <div class="form-group">
+                <label for="check-status-id">Project id</label>
+                <input id="check-status-id" type="text" class="form-control" required>
+              </div>
+              <button id="check-status-btn" class="btn btn-info btn-default">Check status</button>
+            </form>
+          </div>
+        </div>
       </div>
 
       <!-- Notification modal -->
@@ -141,8 +156,10 @@
               <p>
                 Your speedy project has been submitted. You'll be able to hear the read in the following urls:
                 <div id="links-container">
-
                 </div>
+              </p>
+              <p>
+                You can always check the status of your project with this id: <strong><span id="project-id"></span></strong>
               </p>
             </div>
           </div>
