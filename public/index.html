@@ -27,13 +27,13 @@
 
         <div class="row">
           <div class="col-xs-6">
-            <div class="row">
+            <div class="row page-header">
               <h3><span class="glyphicon glyphicon-fire"></span> Find some Trendy Reddit article</h3>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <h4>The standard Lorem Ipsum passage, used since the 1500s</h4>
-                <p class="text-justify">
+                <h4 id="article-title" >The standard Lorem Ipsum passage, used since the 1500s</h4>
+                <p id="article-content" class="text-justify">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
               </div>
@@ -41,7 +41,7 @@
 
             <div class="row">
               <div class="col-xs-12">
-                <button class="btn btn-default btn-success">Find trendy article</button>
+                <button id="find-article" class="btn btn-default btn-success">Find trendy article</button>
               </div>
             </div>
 
@@ -50,9 +50,11 @@
 
 
           <div class="col-xs-6">
+            <div class="row page-header">
+              <h3><span class="glyphicon glyphicon-bullhorn"></span> Create a Speedy project</h3>
+            </div>
             <div class="row">
               <div class="col-xs-12">
-                <h3><span class="glyphicon glyphicon-bullhorn"></span> Create a Speedy project</h3>
                 <form>
                   <div class="form-group">
                     <label for="title">Title</label>
@@ -68,10 +70,10 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="gender-and-age">Language</label>
+                    <label for="gender-and-age">Gender and age</label>
                     <select class="form-control" id="gender-and-age">
-                      <option value="eng-us">middleAgeMale</option>
-                      <option value="eng-us">middleAgeMale</option>
+                      <option value="middleAgeMale">middleAgeMale</option>
+                      <option value="middleAgeMale">middleAgeMale</option>
                     </select>
                   </div>
 
@@ -95,10 +97,8 @@
                     <input type="number" class="form-control" id="price">
                   </div>
                   <div class="text-center">
-                    <input type="submit" class="btn btn-default btn-success" value="Create">
+                    <button id="create-vb-speedy" class="btn btn-default btn-success">Create</button>
                   </div>
-
-
                 </form>
               </div>
             </div>
@@ -135,10 +135,12 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <!-- Live reload -->
     <script src="//localhost:35729/livereload.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

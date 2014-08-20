@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       }
     },
     concurrent: {
-      serve: ['execute:serve','watch:serve']
+      serve: ['execute:serve','watch:serve'],
     }
   });
   grunt.loadNpmTasks('grunt-contrib-watch');

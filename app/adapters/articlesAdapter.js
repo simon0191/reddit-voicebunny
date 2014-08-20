@@ -1,12 +1,24 @@
+var requestify = require('requestify');
+
 var articlesAdapter = (function() {
-	return {
-		getTrendy: function(callback) {
-			callback(null,{
-				title: 'Article Title (mock)',
-				content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-			});
-		}
-	};
+  return {
+    getTrendy: function(callback) {
+
+      requestify.get('http://www.reddit.com/r/funny/hot.json?limit=1').then(function(response) {
+          // Get the response body
+          var title = response.getBody().data.children[0].data.title;
+          var url = response.getBody().data.children[0].data.url;
+
+          console.log("Title: "+title);
+          console.log("URL: "+url);
+          callback(null,{
+            title: title,
+            url: url
+          });
+
+      });
+    }
+  };
 
 })();
 

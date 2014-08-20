@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+
 var articlesAdapter = require('./app/adapters/articlesAdapter.js');
+var projectsAdapter = require('./app/adapters/projectsAdapter.js');
 
 var app = express();
 
@@ -18,10 +20,26 @@ app.get('/articles/trendy', function(req,res) {
     } else {
       res.send(200,article);
     }
-
   });
 
 });
+
+
+//POST -> create a speedy project
+app.post('/projects', function(req,res) {
+  var postParams = req.body;
+  projectsAdapter.create(postParams,function(err,project){
+    if(err) {
+      res.send(500,{
+        error: 'Something went wrong'
+      });
+    } else {
+      console.log("SIMON else");
+      res.send(200,project);
+    }
+  });
+});
+
 
 
 // Serve static files
