@@ -5,7 +5,7 @@ $(document).ready(function(){
     $.getJSON('/articles/trendy',function(article) {
       //Article
       $('#article-title').text(article.title);
-      $('#article-content').text(article.url);
+      $('#article-title').attr('href',article.url);
 
       //Form
       $('#title').val(article.title);
