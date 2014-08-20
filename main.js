@@ -1,13 +1,34 @@
-var http = require("http");
+var express = require('express');
+var bodyParser = require('body-parser');
+var articlesAdapter = require('./app/adapters/articlesAdapter.js');
 
-http.get("http://www.reddit.com/subreddits/popular.json?limit=5", function(res) {
-  console.log("Got response: " + res.statusCode);
-  console.log("-------------------------------");
-  res.setEncoding('utf8');
-  res.on('data', function (chunk) {
-    console.log('BODY: ' + chunk);
+var app = express();
+
+// Serve API
+app.use(bodyParser());
+
+//GET -> get a trendy article
+app.get('/articles/trendy', function(req,res) {
+
+  articlesAdapter.getTrendy(function(err,article){
+    if(err) {
+      res.send(500,{
+        error: 'Something went wrong'
+      });
+    } else {
+      res.send(200,article);
+    }
+
   });
 
-}).on('error', function(e) {
-  console.log("Got error: " + e.message);
 });
+
+
+// Serve static files
+app.use(express.static(__dirname + '/public'));
+
+
+//Init app
+var port = 3000;
+app.listen(process.env.PORT || port);
+console.log('Listening in port '+port);
