@@ -42,9 +42,13 @@ $(document).ready(function(){
 
     var projectId = $('#check-status-id').val();
     $.getJSON('/projects/'+projectId, function(project) {
-        console.log(project);
-        showProjectInfo(project);
-      });
+      console.log(project);
+      showProjectInfo(project);
+    }).fail(function(err){
+      showErrorModal('Verify Id',
+        "We didn't find a project with such id."
+      );
+    });
   });
 
 
