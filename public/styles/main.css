@@ -11,3 +11,13 @@ footer {
 	color: white;
 	padding: 3px;
 }
+
+/** Notification Modal*/
+#error-modal .modal-header {
+	background-color: #419641;
+}
+
+/** Error Modal*/
+#error-modal .modal-header {
+	background-color: #d9534f;
+}
