@@ -9,6 +9,7 @@ $(document).ready(function(){
 
       //Form
       $('#title').val(article.title);
+      $('#script').val(article.title);
 
     })
   });
@@ -18,7 +19,7 @@ $(document).ready(function(){
   $('#create-vb-speedy').on('click',function(event) {
     event.preventDefault();
 
-    var formFields = ['title','language','gender-and-age','lifetime','remarks','ping','price'];
+    var formFields = ['title','script','language','gender-and-age','lifetime','remarks','ping','price'];
     var postData = {};
     _.each(formFields,function(field) {
       var elem = $('#'+field);

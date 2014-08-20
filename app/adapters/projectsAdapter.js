@@ -5,8 +5,8 @@ var requestify = require('requestify');
 var projectsAdapter = (function() {
 
   return {
-    create: function(postParams,callback) {
-
+    create : function(postParams,callback) {
+      console.log("inside create: "+JSON.stringify(postParams));
       requestify.request('https://api.voicebunny.com/projects/addSpeedy.json', {
           method: 'POST',
           body: {
@@ -19,19 +19,13 @@ var projectsAdapter = (function() {
               password: config.VOICE_BUNNY_API_TOKEN
           },
           dataType: 'json'
-      })
-      .then(function(response) {
-          // get the response body
-          console.log(response.getBody());
 
-           // get the code
-           console.log(response.getCode());
+      }).then(function(response) {
 
-          // get the raw response body
-          console.log(response.body);
-          callback(null,response.getBody());
+        callback(null,response.getBody());
       });
     }
+
   };
 
 })();

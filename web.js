@@ -28,14 +28,12 @@ app.get('/articles/trendy', function(req,res) {
 //POST -> create a speedy project
 app.post('/projects', function(req,res) {
   var postParams = req.body;
-  console.log("POSTPARAMS: "+postParams);
   projectsAdapter.create(postParams,function(err,project){
     if(err) {
       res.send(500,{
         error: 'Something went wrong'
       });
     } else {
-      console.log("SIMON else");
       res.send(200,project);
     }
   });
